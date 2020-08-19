@@ -1,0 +1,98 @@
+﻿@model IITtechcom.Models.Entities.Information
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+
+    var visibility = "hidden";
+    if (Model == null)
+    {
+        visibility = "visible";
+    }
+}
+
+<h2 style="margin-left: 12px;">CompanyIn4</h2>
+
+<div style="visibility: @visibility">
+    <p>
+        @Html.ActionLink("Create New", "Create", "CompanyIn4", new { style = "margin-left: 12px;" })
+    </p>
+</div>
+
+<div class="row">
+    <fieldset class="col-md-12 col-md-offset-1 ">
+        <div class="table-responsive">
+            <table  class="table  " id="dataTables-example">
+                <tr>
+                    <th>Edit</th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NameCompany)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Logo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Tel)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Hotline)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Address)
+                    </th>
+
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.MetaTitle)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MetaDecription)
+                    </th>
+
+                </tr>
+
+                @if (Model != null)
+                {
+            <tr>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) | @Html.ActionLink("Details", "Details", new { id = Model.ID })
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.NameCompany)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.Logo)
+                    <img src=@Model.Logo width="150px;" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.Tel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.Hotline)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.Address)
+                </td>
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => Model.MetaTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.MetaDecription)
+                </td>
+
+            </tr>
+
+                }
+
+            </table>
+        </div>
+    </fieldset>
+</div>

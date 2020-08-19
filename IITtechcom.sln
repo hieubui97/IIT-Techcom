@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30320.27
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IITtechcom", "IITtechcom\IITtechcom.csproj", "{8524CBB4-A4A6-4DF9-A6B1-327AF24A961E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{BE3C8D88-A51F-47FD-AFC9-047A65FABE6E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8524CBB4-A4A6-4DF9-A6B1-327AF24A961E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8524CBB4-A4A6-4DF9-A6B1-327AF24A961E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8524CBB4-A4A6-4DF9-A6B1-327AF24A961E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8524CBB4-A4A6-4DF9-A6B1-327AF24A961E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE3C8D88-A51F-47FD-AFC9-047A65FABE6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE3C8D88-A51F-47FD-AFC9-047A65FABE6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE3C8D88-A51F-47FD-AFC9-047A65FABE6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE3C8D88-A51F-47FD-AFC9-047A65FABE6E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {544D2FD2-E059-47A0-B678-1D1905C7F19E}
+	EndGlobalSection
+EndGlobal

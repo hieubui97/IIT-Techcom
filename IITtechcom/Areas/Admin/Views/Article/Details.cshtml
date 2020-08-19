@@ -1,0 +1,116 @@
+﻿@using IITtechcom.Models.DAO
+@model IITtechcom.Models.Entities.Article
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="margin-left: 12px;">Details</h2>
+
+<div style="margin-left: 12px;">
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+            
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image)
+            <div>
+                <img src="@Model.Image" width="300px;" />
+            </div>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MenuID)
+        </dt>
+
+        <dd>
+            @{
+                var dao = new MenuDAO();
+                int id = Model.MenuID;
+                var menu = dao.GetMenu(id);
+            }
+            @menu.Name
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreateDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Content)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Content)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShowHome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShowHome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Decription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Decription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MetaTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MetaTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MetaDecription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MetaDecription)
+        </dd>
+
+    </dl>
+</div>
+<p style="margin-left: 12px;">
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

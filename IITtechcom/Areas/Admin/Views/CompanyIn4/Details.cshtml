@@ -1,0 +1,100 @@
+﻿@model IITtechcom.Models.Entities.Information
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="margin-left: 12px;">Company In4</h2>
+
+<div style="margin-left: 12px;">
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NameCompany)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NameCompany)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Logo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Logo)
+            <div>
+                <img src="@Model.Logo" width="200px;" />
+            </div>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hotline)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hotline)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Terms_Conditions)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Terms_Conditions)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Decription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Decription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MetaTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MetaTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MetaDecription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MetaDecription)
+        </dd>
+
+    </dl>
+</div>
+<p style="margin-left: 12px;">
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) | @Html.ActionLink("Back to List", "Index")
+</p>

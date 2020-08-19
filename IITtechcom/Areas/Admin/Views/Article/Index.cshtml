@@ -1,0 +1,108 @@
+﻿@using IITtechcom.Models.DAO
+@using PagedList.Mvc
+@model PagedList.IPagedList<IITtechcom.Models.Entities.Article>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="margin-left: 12px;">Article</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", "Article", new { style = "margin-left: 12px;" })
+</p>
+<div class="row">
+    <fieldset class="col-md-12 col-md-offset-1 ">
+        <div class="table-responsive">
+            <table class="table  " id="dataTables-example">
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Image
+                    </th>
+                    <th>
+                        MenuID
+                    </th>
+                    <th>
+                        CreateDate
+                    </th>
+
+                    <th>
+                        Status
+                    </th>
+                    <th>
+                        IsActive
+                    </th>
+                    <th>
+                        ShowHome
+                    </th>
+
+                    <th>
+                        MetaTile
+                    </th>
+
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr id="row_@item.ID">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Image)
+                            <img src="@item.Image" width="300" />
+                        </td>
+                        <td>
+                            @{
+                                var dao = new MenuDAO();
+                                int id = item.MenuID;
+                                var menu = dao.GetMenu(id);
+                            }
+                            @menu.Name
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreateDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Status)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IsActive)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ShowHome)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MetaTitle)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                            @Ajax.ActionLink("Delete", "Delete", new { id = item.ID }, new AjaxOptions
+                            {
+                                Confirm = "Bạn có muốn xoá bài viết này?",
+                                OnComplete = "$('#row_" + @item.ID + "').remove()",
+                                HttpMethod = "Delete"
+                            })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </fieldset>
+</div>
+
+<div style="padding: 12px;">
+    @Html.PagedListPager(Model, Page => Url.Action("Index", new
+    {
+        Page,
+        @searchString = @ViewBag.SearchString
+    }))
+</div>

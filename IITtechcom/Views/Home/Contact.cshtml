@@ -1,0 +1,184 @@
+﻿@using IITtechcom.Models.Entities
+@using BotDetect.Web.Mvc;
+@model ContactCaptcha
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    ModelDbContext db = new ModelDbContext();
+
+    var companyIn4 = db.Information.FirstOrDefault();
+
+    MvcCaptcha contactCaptcha = new MvcCaptcha("ContactCaptcha");
+    contactCaptcha.UserInputID = "CaptchaCode";
+}
+
+
+
+<!-- breadcrumb start-->
+<section class="breadcrumb breadcrumb_bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb_iner text-center">
+                    <div class="breadcrumb_iner_item">
+                        <h2>contact</h2>
+                        @if (ViewBag.Success != null)
+                        {
+                            <h2 style="font-size: 48px;">@ViewBag.Success</h2>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- breadcrumb start-->
+<!-- ================ contact section start ================= -->
+<section class="contact-section section_padding">
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-12">
+                <h2 class="contact-title">Get in Touch</h2>
+            </div>
+            <div class="col-lg-8">
+
+                <form class="form-contact contact_form" action="Contact" method="post" id="contactForm"
+                      novalidate="novalidate">
+
+                    <div class="row">
+                        <div class="col-12">
+                            @if (Model != null)
+                            {
+                                <div class="form-group">
+                                    <textarea class="form-control w-100" name="Request" id="Request" cols="30" rows="9"
+                                              onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Message'"
+                                              placeholder='Enter Message'>@Model.Request</textarea>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="form-group">
+                                    <textarea class="form-control w-100" name="Request" id="Request" cols="30" rows="9"
+                                              onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Message'"
+                                              placeholder='Enter Message'></textarea>
+                                </div>
+                            }
+
+                        </div>
+
+                        <div class="col-sm-6">
+                            @if (Model != null)
+                            {
+                                <div class="form-group">
+                                    <input class="form-control" name="Name" id="Name" type="text" onfocus="this.placeholder = ''"
+                                           onblur="this.placeholder = 'Enter your name'" placeholder='Enter your name' value="@Model.Name">
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="form-group">
+                                    <input class="form-control" name="Name" id="Name" type="text" onfocus="this.placeholder = ''"
+                                           onblur="this.placeholder = 'Enter your name'" placeholder='Enter your name'>
+                                </div>
+                            }
+                        </div>
+                        <div class="col-sm-6">
+                            @if (Model != null)
+                            {
+                                <div class="form-group">
+                                    <input class="form-control" name="Email" id="Email" type="email" onfocus="this.placeholder = ''"
+                                           onblur="this.placeholder = 'Enter email address'" placeholder='Enter email address' value="@Model.Email">
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="form-group">
+                                    <input class="form-control" name="Email" id="Email" type="email" onfocus="this.placeholder = ''"
+                                           onblur="this.placeholder = 'Enter email address'" placeholder='Enter email address'>
+                                </div>
+                            }
+
+                        </div>
+                        <div class="col-sm-6">
+                            @if (Model != null)
+                            {
+                                <div class="form-group">
+                                    <input class="form-control" name="Phone" id="Phone" type="text" onfocus="this.placeholder = ''"
+                                           onblur="this.placeholder = 'Enter your phone'" placeholder='Enter your phone' value="@Model.Phone">
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="form-group">
+                                    <input class="form-control" name="Phone" id="Phone" type="text" onfocus="this.placeholder = ''"
+                                           onblur="this.placeholder = 'Enter your phone'" placeholder='Enter your phone'>
+                                </div>
+                            }
+
+                        </div>
+                        <div class="col-sm-6">
+                            @if (Model != null)
+                            {
+                                <div class="form-group">
+                                    <input class="form-control" name="Address" id="Address" type="text" onfocus="this.placeholder = ''"
+                                           onblur="this.placeholder = 'Enter your address'" placeholder='Enter your address' value="@Model.Address">
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="form-group">
+                                    <input class="form-control" name="Address" id="Address" type="text" onfocus="this.placeholder = ''"
+                                           onblur="this.placeholder = 'Enter your address'" placeholder='Enter your address'>
+                                </div>
+                            }
+
+                        </div>
+
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                @Html.Captcha(contactCaptcha)
+                                @Html.TextBox("CaptchaCode")
+                                @Html.ValidationMessage("CaptchaCode", "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group mt-3">
+                        <button type="submit" class="button button-contactForm btn_1">Send Message <i class="fas fa-share"></i></button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-4">
+                <div class="media contact-info">
+                    <span class="contact-info__icon"><i class="fas fa-map-marked"></i></span>
+                    <div class="media-body">
+                        <h3>Address</h3>
+                        <p>@companyIn4.Address</p>
+                    </div>
+                </div>
+                <div class="media contact-info">
+                    <span class="contact-info__icon"><i class="fab fa-telegram"></i></span>
+                    <div class="media-body">
+                        <h3>Tel</h3>
+                        <p>@companyIn4.Tel</p>
+                    </div>
+                </div>
+                <div class="media contact-info">
+                    <span class="contact-info__icon"><i class="fas fa-envelope"></i></span>
+                    <div class="media-body">
+                        <h3>Email</h3>
+                        <p>@companyIn4.Email</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div style="width: 100%"><iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=T%E1%BA%A7ng4,%20147,%20Mai%20D%E1%BB%8Bch,%20C%E1%BA%A7u%20Gi%E1%BA%A5y,%20H%C3%A0%20N%E1%BB%99i+(IIT%20Techcom)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe></div>
+    </div>
+</section>
+<!-- ================ contact section end ================= -->
